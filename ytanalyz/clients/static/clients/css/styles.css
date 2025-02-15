@@ -9,6 +9,7 @@
 .add-client-button {
     background-color: #3498db; /* Голубой цвет */
     color: white;
+    border: none; /* Убирает границу */
     padding: 12px 24px;
     border-radius: 8px;
     text-decoration: none;
@@ -20,12 +21,17 @@
     transition: background-color 0.3s ease;
 }
 
+.add-client-button:focus,
+.add-client-button:active {
+    box-shadow: none; /* Убирает тень, если она есть */
+}
+
 .add-client-button:hover {
     background-color: #2980b9; /* Тёмно-голубой при наведении */
 }
 
 .add-client-button .icon {
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     font-weight: bold;
 }
 
