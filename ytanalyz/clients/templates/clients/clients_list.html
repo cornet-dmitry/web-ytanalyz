@@ -1,0 +1,49 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'clients/css/styles.css' %}">
+
+    <div class="page-header">
+        <h1>Клиенты</h1>
+        <button id="open-modal-button" class="add-client-button">
+            <i class="fas fa-plus"></i> Добавить клиента
+        </button>
+    </div>
+
+    <div class="card-container">
+    {% for client in clients %}
+        <div class="client-card">
+            <div class="client-name">{{ client.client_name }}</div>
+            <div class="project-name">{{ client.project_name }}</div>
+            <a href="{% url 'client_detail' client.id %}" class="details-link">Подробнее</a>
+        </div>
+    {% endfor %}
+    </div>
+
+    <!-- Модальное окно -->
+    {% include 'clients/add_client_modal.html' %}
+
+    <!-- JavaScript для управления модальным окном -->
+    <script>
+        // Открытие модального окна
+        document.getElementById('open-modal-button').onclick = function() {
+            document.getElementById('add-client-modal').style.display = 'block';
+        };
+
+        // Закрытие модального окна
+        document.getElementsByClassName('close')[0].onclick = function() {
+            document.getElementById('add-client-modal').style.display = 'none';
+        };
+
+        // Закрытие модального окна при клике вне его области
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('add-client-modal')) {
+                document.getElementById('add-client-modal').style.display = 'none';
+            }
+        };
+
+
+    </script>
+
+{% endblock %}

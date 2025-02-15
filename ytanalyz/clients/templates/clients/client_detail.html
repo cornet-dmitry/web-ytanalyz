@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'clients/css/styles.css' %}">
+
+    <div class="client-detail">
+        <h1>{{ client.client_name }}</h1>
+        <p><strong>Проект:</strong> {{ client.project_name }}</p>
+        <p><strong>Город:</strong> {{ client.city }}</p>
+        <p><strong>Контакт:</strong> {{ client.contact }}</p>
+        <p><strong>Дата начала работы:</strong> {{ client.start_date }}</p>
+        <p><strong>Статус:</strong> {{ client.status.status_name }}</p>
+        {% if client.photo %}
+            <img src="{{ client.photo }}" alt="Фото клиента" class="client-photo">
+        {% endif %}
+    </div>
+
+    <a href="{% url 'clients_list' %}" class="back-link">Назад к списку клиентов</a>
+{% endblock %}

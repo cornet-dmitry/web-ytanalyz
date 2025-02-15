@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+    <h1>Главная страница</h1>
+
+    <!-- Блок новостей -->
+        {% if news %}
+            <h2>Новости сервиса</h2>
+            {% for item in news %}
+                <div class="news-card">
+                    <h5>
+                        {{ item.title }}
+                    </h5>
+                    <p>{{ item.content|linebreaks }}</p>
+
+                    <div class="date">
+                        <p>Опубликовано: {{ item.created_at|date:"d.m.Y" }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-news">В данный момент новости отсутствуют :(</p>
+        {% endif %}
+{% endblock %}

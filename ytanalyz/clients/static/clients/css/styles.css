@@ -1,0 +1,160 @@
+/* Общие стили для заголовка страницы и кнопки */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.add-client-button {
+    background-color: #3498db; /* Голубой цвет */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.add-client-button:hover {
+    background-color: #2980b9; /* Тёмно-голубой при наведении */
+}
+
+.add-client-button .icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Карточка клиента на главном экране клиентов */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.client-card {
+    background: #2c3e50; /* Тёмный фон */
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 200px; /* Фиксированная ширина */
+    height: 200px; /* Фиксированная высота */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #ecf0f1; /* Светлый текст */
+}
+
+.client-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.client-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #ecf0f1;
+}
+
+.project-name {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #bdc3c7;
+    padding: 8px 0;
+    border-top: 1px solid rgba(236, 240, 241, 0.1);
+    margin-top: 12px;
+}
+
+.details-link {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.details-link:hover {
+    color: #2980b9;
+}
+
+/* Стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+/* Общие стили для формы */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group .errorlist {
+    color: #dc3545;
+    margin-top: 4px;
+    font-size: 0.9rem;
+}
+
+.submit-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #2980b9;
+}

@@ -1,0 +1,381 @@
+/* Основные стили */
+:root {
+    --primary-color: #6C5CE7; /* Приглушенный фиолетовый */
+    --secondary-color: #636E72; /* Серый */
+    --background-color: #F8F9FA; /* Светлый фон */
+    --text-color: #2D3436; /* Темный текст */
+    --hover-color: #DFE6E9; /* Светлый фон при наведении */
+    --font-family: 'Century Gothic', sans-serif;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для карточек */
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('main/fonts/centurygothic.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: white;
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Боковое меню */
+aside {
+    width: 250px;
+    background: var(--background-color);
+    padding: 20px;
+    position: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Распределяем пространство между элементами */
+    box-shadow: var(--shadow);
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1; /* Занимает все доступное пространство */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: center;
+    padding: 10px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    align-self: flex-end;
+    color: var(--primary-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    padding: 10px;
+    border-radius: 10px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: var(--hover-color);
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+/* Стили для блока с пользователем */
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto; /* Прижимаем к низу */
+}
+
+/* Имя пользователя */
+.username {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* Кнопка "Войти" */
+.login {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+    width: 100%; /* Занимает всю ширину */
+}
+
+.login:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Кнопка "Выйти" */
+.logout-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    color: var(--primary-color);
+    background: var(--hover-color);
+}
+
+/* Стили для блока ошибки */
+.error-message {
+    background-color: #FFEBEE; /* Светло-красный фон */
+    color: #C62828; /* Темно-красный текст */
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #EF9A9A; /* Граница */
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    transition: all 0.3s ease;
+}
+
+.error-message:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Увеличенная тень при наведении */
+    transform: translateY(-2px); /* Легкий подъем */
+}
+
+/* Карточка новости */
+.news-card {
+    background: var(--background-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Заголовок новости */
+.news-card h5 {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Блок "NEW!" */
+.new-news-msg {
+    color: #34BB04;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    background: #E8F5E9;
+    border-radius: 5px;
+}
+
+/* Текст новости */
+.news-card p {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Сообщение об отсутствии новостей */
+.no-news {
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+/* Стили для даты публикации и обновления */
+.date p {
+    font-size: 0.7rem;
+    color: var(--secondary-color);
+    text-align: right;
+    opacity: 0.8;
+    line-height: 1.4;
+}
+
+/* Основной контент */
+main {
+    margin-left: 250px;
+    flex-grow: 1;
+    padding: 40px;
+    background: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.news-card {
+    background: var(--background-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.news-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.news-card p {
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    aside {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    .login {
+        margin-top: 10px;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .news-card {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .news-card h5 {
+        font-size: 1.1rem;
+    }
+
+    .new-news-msg {
+        font-size: 0.8rem;
+    }
+
+    .news-card p {
+        font-size: 0.9rem;
+    }
+
+    .no-news {
+        font-size: 0.9rem;
+    }
+
+    .card-container {
+        justify-content: center;
+    }
+
+    .client-card {
+        width: 150px;
+        height: 150px;
+        padding: 16px;
+    }
+
+    .client-name {
+        font-size: 1.1rem;
+    }
+
+    .project-name {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .news-card h5 {
+        font-size: 1rem;
+    }
+
+    .news-card p {
+        font-size: 0.85rem;
+    }
+
+    .no-news {
+        font-size: 0.85rem;
+    }
+}

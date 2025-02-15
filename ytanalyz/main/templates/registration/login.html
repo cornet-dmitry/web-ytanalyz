@@ -1,0 +1,19 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+    <h1>Войдите в систему</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Логин" class="form-control"><br>
+        <input type="text" name="password" placeholder="Пароль" class="form-control"><br>
+        <button class="login" type="submit">Войти в систему</button>
+
+        <!-- Отображение ошибок -->
+        {% if form.errors %}
+            <div class="error-message">
+                Неправильное имя пользователя или пароль. Пожалуйста, попробуйте снова.
+            </div>
+        {% endif %}
+    </form>
+{% endblock %}
