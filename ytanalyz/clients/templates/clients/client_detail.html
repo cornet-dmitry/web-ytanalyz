@@ -14,7 +14,55 @@
         {% if client.photo %}
             <img src="{{ client.photo }}" alt="Фото клиента" class="client-photo">
         {% endif %}
+
+        <!-- Кнопки управления -->
+        <div class="actions">
+            <a href="{% url 'clients_list' %}" class="back-link">
+                <i class="fas fa-arrow-left"></i> Назад к списку
+            </a>
+            <button id="delete-client-button" class="delete-button">
+                <i class="fas fa-trash"></i> Удалить клиента
+            </button>
+        </div>
     </div>
 
-    <a href="{% url 'clients_list' %}" class="back-link">Назад к списку клиентов</a>
+    <!-- Модальное окно для подтверждения удаления -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Подтверждение удаления</h2>
+            <p>Вы уверены, что хотите удалить клиента "{{ client.client_name }}"?</p>
+            <form id="delete-form" action="{% url 'delete_client' client.id %}" method="POST">
+                {% csrf_token %}
+                <div class="modal-actions">
+                    <button type="button" class="cancel-button">Отмена</button>
+                    <button type="submit" class="confirm-button">Удалить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript для управления модальным окном -->
+    <script>
+        // Открытие модального окна
+        document.getElementById('delete-client-button').onclick = function() {
+            document.getElementById('delete-modal').style.display = 'block';
+        };
+
+        // Закрытие модального окна
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('delete-modal').style.display = 'none';
+        };
+
+        document.querySelector('.cancel-button').onclick = function() {
+            document.getElementById('delete-modal').style.display = 'none';
+        };
+
+        // Закрытие модального окна при клике вне его области
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('delete-modal')) {
+                document.getElementById('delete-modal').style.display = 'none';
+            }
+        };
+    </script>
 {% endblock %}

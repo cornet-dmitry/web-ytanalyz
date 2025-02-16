@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -52,5 +53,35 @@ def add_client(request):
 
 @login_required
 def client_detail(request, client_id):
-    client = get_object_or_404(Clients, id=client_id)  # Получаем клиента по ID
-    return render(request, 'clients/client_detail.html', {'client': client})
+    # Получаем клиента по ID или возвращаем 404
+    client = get_object_or_404(Clients, id=client_id)
+    # Проверяем, есть ли у пользователя доступ к этому клиенту
+    has_access = UsersClients.objects.filter(users=request.user, clients=client).exists()
+
+    if has_access:
+        # Если доступ есть, отображаем карточку клиента
+        return render(request, 'clients/client_detail.html', {'client': client})
+    else:
+        # Если доступа нет, показываем сообщение об ошибке и перенаправляем
+        messages.error(request, 'У вас нет доступа к этому клиенту.')
+        return redirect('clients_list')
+
+
+@login_required
+def delete_client(request, client_id):
+    # Получаем клиента по ID или возвращаем 404
+    client = get_object_or_404(Clients, id=client_id)
+    # Проверяем, есть ли у пользователя доступ к этому клиенту
+    has_access = UsersClients.objects.filter(users=request.user, clients=client).exists()
+
+    if has_access:
+        # Если доступ есть, удаляем связанные записи и клиента
+        UsersClients.objects.filter(clients=client).delete()  # Удаляем все связанные записи из UsersClients
+        client.delete()  # Удаляем клиента
+        messages.success(request, f'Клиент "{client.client_name}" успешно удалён.')
+    else:
+        # Если доступа нет, показываем сообщение об ошибке
+        messages.error(request, 'У вас нет доступа для удаления этого клиента.')
+
+    # Перенаправляем на страницу списка клиентов
+    return redirect('clients_list')
