@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('main.urls')),  # Подключи URL-адреса приложения main
     path('account/', include('django.contrib.auth.urls')),
     path('clients/', include('clients.urls')),
+    path('videos/', include('videos.urls')),
 ]

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Clients, ClientsStatus, UsersClients
+from .models import Clients, ClientsStatus, UsersClients, FullVideos
 
 
 @admin.register(Clients)
